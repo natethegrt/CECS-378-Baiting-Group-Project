@@ -1,0 +1,128 @@
+#form {
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+        "fn ln ."
+        "ad ad ad"
+        "ct st zc"
+        "cn cn ap"
+        "cc cc ap"
+        "cv ex pc";
+    border-radius: 10px;
+    background: #ffffff87;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #33658A;
+    padding: 20px;
+    width: 60vw;
+}
+
+.form-entry {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.form-entry p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    margin: 0px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    font-style: normal;
+}
+
+.form-entry input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 3px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-entry input:invalid {
+    animation: shake 0.2s ease-in-out 0s 2;
+    box-shadow: 0 0 0.6rem #ff0000;
+}
+
+@keyframes shake {
+    0%      { margin-left: 0rem; }
+    25%     { margin-left: 0.5rem; }
+    75%     { margin-left: -0.5rem; }
+    100%    { margin-left: 0rem; }
+}
+
+#form > first-name {
+    grid-area: fn;
+}
+
+#form > last-name {
+    grid-area: ln;
+}
+
+#form > address {
+    grid-area: ad;
+}
+
+#form > city {
+    grid-area: ct;
+}
+
+#form > state {
+    grid-area: st;
+}
+
+#form > zip-code {
+    grid-area: zc;
+}
+
+#form > card-name {
+    grid-area: cn;
+}
+
+#form > credit-card {
+    grid-area: cc;
+}
+
+#form > cvv {
+    grid-area: cv;
+}
+
+#form > expiration-date {
+    grid-area: ex;
+}
+
+#form > postal-code {
+    grid-area: pc;
+}
+
+#form > accepted-payment {
+    grid-area: ap;
+}
+
+button {
+    background-color: rgb(0, 233, 47);
+    border-color: rgb(114, 255, 128);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.25em;
+    color: rgb(52, 52, 52);
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border-width: 3px;
+    margin: 0;
+    margin-top: 10px;
+    transition: 0.3s cubic-bezier(.51,.01,.43,.99);
+}
+
+button:hover {
+    background-color: rgb(0, 204, 17);
+    border-color: rgb(21, 125, 0);
+    color:rgb(0, 0, 0);
+}
+
+.g-recaptcha {
+    margin-top: 10px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
